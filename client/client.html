@@ -48,7 +48,7 @@
     const requestUpdate = (e, countryForm) => {
       e.preventDefault();
 
-      const url = "";
+      const url = "/getLandmarks";
       const country = countryForm.querySelector('#countrySelect').value;
       
       //Being hardcoded for testing purposes
@@ -116,6 +116,7 @@
     <h3>Where do you want to go?</h3>
     
     <!-- Form for user to select a country&origin they want to visit -->
+    <!-- Select buttons are not functional yet-->
     <form id="countryForm" action="/getLandmarks" method="get">
       
       <select id='originStatus'>
