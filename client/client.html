@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Our simple HTTP server</title>
+  <title>Dream Vacation</title>
   <link rel="stylesheet" type="text/css" href="/style.css">
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
@@ -91,43 +91,68 @@
     };
 
     const init = () => {
-      const userForm = document.querySelector('#userForm');
-      const nameForm = document.querySelector('#nameForm');
+      const countryForm = document.querySelector('#countryForm');
+      //const nameForm = document.querySelector('#nameForm');
 
-      const getUsers = (e) => requestUpdate(e, userForm);
-      const addUser = (e) => sendPost(e, nameForm);
+      const getLandmarks = (e) => requestUpdate(e, countryForm);
+      //const addUser = (e) => sendPost(e, nameForm);
 
-      userForm.addEventListener('submit', getUsers);
-      nameForm.addEventListener('submit', addUser);
+      countryForm.addEventListener('submit', getLandmarks);
+      //nameForm.addEventListener('submit', addUser);
     };
 
     window.onload = init;
 
   </script>
 </head>
+
 <body>
+
   <section id="top">
-    <h3>POST Status Code Tests</h3>
-    <form id="nameForm" action="/addUser" method="post">
-      <label for="name">Name: </label>
-      <input id="nameField" type="text" name="name" />
-      <label for="age">Age: </label>
-      <input id="ageField" type="number" name="age" min="0" max="100" step="1"/>
-      <input type="submit" value="Add User" />
-    </form>
-    <form id="userForm" action="/getUsers" method="get">
-      <select id='urlField'>
-        <option value='/getUsers'>/getUsers</option>
-        <option value='/notReal'>/notReal</option>
+    <h3>Where do you want to go?</h3>
+    
+    <!-- Form for user to select a country&origin they want to visit -->
+    <form id="countryForm" action="/getLandmarks" method="get">
+      
+      <select id='originStatus'>
+        <option value='/both'>Both</option>
+        <option value='/man'>Man-made</option>
+        <option value='/nature'>Natural</option>
       </select>
-      <select id="methodSelect">
-        <option value="get">GET</option>
-        <option value="head">HEAD</option>
-      </select>
-      <input type="submit" value="Get User" />
-    </form>
+      
+      <label>Country</label>
+      <select id="countrySelect">
+        <select id = "countries">
+          <option value = "All">All</option>
+          <option value = "Canada">Canada</option>
+          <option value = "China">China</option>
+          <option value = "Egypt">Egypt</option>
+          <option value = "England">England</option>
+          <option value = "France">France</option>
+          <option value = "Germany">Germany</option>
+          <option value = "Ireland">Ireland</option>
+          <option value = "Italy">Italy</option>
+          <option value = "Japan">Japan</option>
+          <option value = "Russia">Russia</option>
+          <option value = "United States">United States</option>
+        </select>
+        
+        <input type="submit" value="Get Landmarks" />
+      </form>
+      
+      <!-- Commented out for now, may be used later when API is closer to finished -->
+      <!-- <form id="nameForm" action="/addUser" method="post">
+        <label for="name">Name: </label>
+        <input id="nameField" type="text" name="name" />
+        <label for="age">Age: </label>
+        <input id="ageField" type="number" name="age" min="0" max="100" step="1"/>
+        <input type="submit" value="Add User" />
+      </form> -->
+
   </section>
+
   <section id="content">
   </section>
+
 </body>
 </html>
