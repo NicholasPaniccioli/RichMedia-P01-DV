@@ -1,4 +1,4 @@
-const landmarks = {"United States": "niagra"};
+const landmarks = {"United States": "Niagra Falls"};
 
 const respondJSON = (request, response, status, object) => {
   const headers = {
