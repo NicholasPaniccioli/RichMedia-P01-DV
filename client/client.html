@@ -45,12 +45,17 @@
       parseJSON(xhr, content);
     };
     
-    const requestUpdate = (e, userForm) => {
-      const url = userForm.querySelector('#urlField').value;
-      const method = userForm.querySelector('#methodSelect').value;
+    const requestUpdate = (e, countryForm) => {
+      e.preventDefault();
+
+      const url = "";
+      const country = countryForm.querySelector('#countrySelect').value;
+      
+      //Being hardcoded for testing purposes
+      const method = 'get';
 
       const xhr = new XMLHttpRequest();
-      xhr.open(method, url);
+      xhr.open('GET', url);
 
       xhr.setRequestHeader('Accept', 'application/json');
 
@@ -62,33 +67,32 @@
 
       xhr.send();
 
-      e.preventDefault();
       return false;
     };
 
-    const sendPost = (e, nameForm) => {
-      e.preventDefault();
+    // const sendPost = (e, nameForm) => {
+    //   e.preventDefault();
 
-      const nameAction = nameForm.getAttribute('action');
-      const nameMethod = nameForm.getAttribute('method');
+    //   const nameAction = countryForm.getAttribute('action');
+    //   const nameMethod = countryForm.getAttribute('method');
 
-      const nameField = nameForm.querySelector('#nameField');
-      const ageField = nameForm.querySelector('#ageField');
+    //   const nameField = nameForm.querySelector('#nameField');
+    //   const ageField = nameForm.querySelector('#ageField');
 
-      const xhr = new XMLHttpRequest();
-      xhr.open(nameMethod, nameAction);
+    //   const xhr = new XMLHttpRequest();
+    //   xhr.open(nameMethod, nameAction);
 
-      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      xhr.setRequestHeader('Accept', 'application/json');
+    //   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    //   xhr.setRequestHeader('Accept', 'application/json');
 
-      xhr.onload = () => handleResponse(xhr);
+    //   xhr.onload = () => handleResponse(xhr);
 
-      const formData = `name=${nameField.value}&age=${ageField.value}`;
+    //   const formData = `name=${nameField.value}&age=${ageField.value}`;
 
-      xhr.send(formData);
+    //   xhr.send(formData);
 
-      return false;
-    };
+    //   return false;
+    // };
 
     const init = () => {
       const countryForm = document.querySelector('#countryForm');
@@ -115,24 +119,24 @@
     <form id="countryForm" action="/getLandmarks" method="get">
       
       <select id='originStatus'>
-        <option value='/both'>Both</option>
-        <option value='/man'>Man-made</option>
-        <option value='/nature'>Natural</option>
+        <option value='both'>Both</option>
+        <option value='man'>Man-made</option>
+        <option value='nature'>Natural</option>
       </select>
       
       <select id="countrySelect">
-          <option value = "All">All</option>
-          <option value = "Canada">Canada</option>
-          <option value = "China">China</option>
-          <option value = "Egypt">Egypt</option>
-          <option value = "England">England</option>
-          <option value = "France">France</option>
-          <option value = "Germany">Germany</option>
-          <option value = "Ireland">Ireland</option>
-          <option value = "Italy">Italy</option>
-          <option value = "Japan">Japan</option>
-          <option value = "Russia">Russia</option>
-          <option value = "United States">United States</option>
+          <option value = "/All">All</option>
+          <option value = "/Canada">Canada</option>
+          <option value = "/China">China</option>
+          <option value = "/Egypt">Egypt</option>
+          <option value = "/England">England</option>
+          <option value = "/France">France</option>
+          <option value = "/Germany">Germany</option>
+          <option value = "/Ireland">Ireland</option>
+          <option value = "/Italy">Italy</option>
+          <option value = "/Japan">Japan</option>
+          <option value = "/Russia">Russia</option>
+          <option value = "/UnitedStates">United States</option>
       </select>
         
       <input type="submit" value="Get Landmarks" />
@@ -145,7 +149,19 @@
         <label for="age">Age: </label>
         <input id="ageField" type="number" name="age" min="0" max="100" step="1"/>
         <input type="submit" value="Add User" />
-    </form> -->
+    </form>
+     
+    <form id="userForm" action="/getUsers" method="get">
+      <select id='urlField'>
+        <option value='/getUsers'>/getUsers</option>
+        <option value='/notReal'>/notReal</option>
+      </select>
+      <select id="methodSelect">
+        <option value="get">GET</option>
+        <option value="head">HEAD</option>
+      </select>
+      <input type="submit" value="Get User" />
+    </form>-->
 
   </section>
 

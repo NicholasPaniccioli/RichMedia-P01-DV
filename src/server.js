@@ -33,15 +33,15 @@ const urlStruct = {
   GET: {
     '/': htmlHandler.getIndex,
     '/style.css': htmlHandler.getCSS,
-    '/getUsers': jsonHandler.getUsers,
+    '/getLandmarks': jsonHandler.getLandmarks,
     notFound: jsonHandler.notFound,
   },
   HEAD: {
-    '/getUsers': jsonHandler.getUsersMeta,
+    '/getLandmarks': jsonHandler.getLandmarksMeta,
     notFound: jsonHandler.notFoundMeta,
   },
   POST: {
-    '/addUser': jsonHandler.addUser,
+    // '/addUser': jsonHandler.addUser,
   },
 };
 
